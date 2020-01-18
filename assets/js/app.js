@@ -90,36 +90,132 @@
 /*!******************************!*\
   !*** ./src/assets/js/app.js ***!
   \******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-/*
-* game
-* */
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _component_button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component/button */ "./src/assets/js/component/button.js");
+/* harmony import */ var _component_playing_field__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./component/playing_field */ "./src/assets/js/component/playing_field.js");
+/* harmony import */ var _component_play_again__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./component/play_again */ "./src/assets/js/component/play_again.js");
+//module js game
 
-/*
-* переменые
- */
-var startBlock = document.querySelector('#startBlock');
-var startBtn = document.querySelector('#startBtn');
-var resetBlock = document.querySelector('#resetBlock');
-var resetBtn = document.querySelector('#resetBtn');
-var start = false;
 
-startBtn.onclick = function (event) {
-  if (start == false) {
-    startBlock.style.display = 'none';
-    resetBlock.style.display = '';
-    start = true;
+
+Object(_component_button__WEBPACK_IMPORTED_MODULE_0__["default"])();
+Object(_component_playing_field__WEBPACK_IMPORTED_MODULE_1__["default"])();
+Object(_component_play_again__WEBPACK_IMPORTED_MODULE_2__["default"])();
+
+/***/ }),
+
+/***/ "./src/assets/js/component/button.js":
+/*!*******************************************!*\
+  !*** ./src/assets/js/component/button.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var buttonClick = function buttonClick() {
+  /*
+  * game
+  * */
+
+  /*
+  * переменые
+   */
+  var startBlock = document.querySelector('#startBlock');
+  var startBtn = document.querySelector('#startBtn');
+  var resetBlock = document.querySelector('#resetBlock');
+  var playAgain = document.querySelector('.play__again');
+  var startGame = document.querySelector('#startGame');
+  var start = false;
+
+  startBtn.onclick = function (event) {
+    if (start == false) {
+      startBlock.style.display = 'none';
+      startGame.style.display = '';
+      start = true;
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (buttonClick);
+
+/***/ }),
+
+/***/ "./src/assets/js/component/play_again.js":
+/*!***********************************************!*\
+  !*** ./src/assets/js/component/play_again.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var playAgain = function playAgain() {
+  var playAgain = document.querySelectorAll('.play__again');
+
+  for (var i = 0; i < playAgain.length; i++) {
+    playAgain[i].onclick = function () {
+      location.reload();
+    };
   }
 };
 
-resetBtn.onclick = function () {
-  if (start == true) {
-    location.reload();
-    start = false;
-  }
+/* harmony default export */ __webpack_exports__["default"] = (playAgain);
+
+/***/ }),
+
+/***/ "./src/assets/js/component/playing_field.js":
+/*!**************************************************!*\
+  !*** ./src/assets/js/component/playing_field.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//module playing field
+var playingField = function playingField() {
+  var ball = document.querySelector('#ball');
+  ball.style.background = 'green';
+  ball.style.width = '100px';
+  ball.style.height = '100px';
+  ball.innerHTML = 'ball';
+  ball.style.color = '#fff';
+  ball.style.fontSize = '26px';
+  ball.style.display = 'flex';
+  ball.style.alignItems = 'center';
+  ball.style.justifyContent = 'center';
+  ball.style.cursor = 'pointer';
+  var stars = document.querySelector('#stars');
+  stars.style.color = '#00FFAB';
+  stars.innerHTML = '0';
+  stars.style.cursor = 'pointer';
+
+  stars.onclick = function () {
+    if (stars.innerHTML !== '0') {
+      stars.innerHTML = '0';
+      stars.style.color = '#00FFAB';
+    }
+  };
+
+  var lifes = document.querySelector('#lifes');
+  lifes.innerHTML = '<span></span><span></span><span></span><span></span><span></span>';
+  var i = 0;
+
+  ball.onclick = function () {
+    i = i + 1;
+    stars.innerHTML = i;
+    ball.style.top = '30%';
+    ball.style.background = '#FF5600';
+    stars.style.color = '#fff';
+  };
 };
+
+/* harmony default export */ __webpack_exports__["default"] = (playingField);
 
 /***/ }),
 

@@ -10,16 +10,35 @@
 </head>
 <body>
 
-<!--container game-->
+<!--container game ball-->
 <section class="container">
     <div id="startBlock" class="container__row container__row_fl-wr_wr bg-img bg-img__game-start vh_100 position_relative">
     
             <button id="startBtn" class="btn btn_bc_rd h2 text_center position_absolute text_dc_none lt-sp_2 center p_5 m_5"></button>
     
-    </div>    <div id="resetBlock" class="container__row container__row_fl-wr_wr bg-img bg-img__game-over vh_100" style="display: none;">
+    </div>    <div id="resetBlock" class="container__row container__row_fl-wr_wr bg-img bg-img__game-over vh_100"
+         style="display: none;">
         <div class="d-flex d-flex_column d-flex_al-it_center position_relative vw_100 my_auto">
             <h1 class="h1 text-info lt-sp_2">Game over</h1>
-            <button id="resetBtn" class="play text-warning h2 text_dc_none lt-sp_2">Play again?</button>
+            <div class="mb_5">
+            <button class="play play__again text-warning h2 text_dc_none lt-sp_2">Play again?</button>
+            </div>    </div>
+    </div>    
+    
+    
+    
+    <!--game-->
+    <div id="startGame" class="container__row container__row_fl-wr_wr bg-img bg-img__game-start vh_100 position_relative" style="display: none;">
+        <div class="d-flex d-flex_column d-flex_al-it_center position_relative vw_100 my_auto">
+            <!--paly again-->
+            <div class="mb_5">
+            <button class="play play__again text-warning h2 text_dc_none lt-sp_2">Play again?</button>
+            </div>        <!--playing field-->
+            <div id="igra" class="igra position_relative">
+                <div id="ball" class="igra__ball position_absolute center"></div>
+                <div id="stars" class="igra__stars position_absolute">0</div>
+                <div id="lifes" class="igra__lifes position_absolute"><span class="d-block"></span></div>
+            </div>
         </div>
     </div></section><script src="assets/js/app.js"></script>
 </body>

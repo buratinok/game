@@ -1,8 +1,12 @@
+@charset "UTF-8";
 body {
   margin: 0
 }
 .m_0 {
   margin: 0
+}
+.mb_5 {
+  margin-bottom: 3rem
 }
 .my_auto {
   margin: auto 0
@@ -67,6 +71,9 @@ body {
 }
 .d_none {
   display: none
+}
+.d_block {
+  display: block
 }
 .container {
   padding: 0;
@@ -209,9 +216,39 @@ body {
   }
 }
 .play:hover {
-  color: #c5002e;
+  color: #a90000;
   cursor: pointer;
   letter-spacing: .4rem;
   -webkit-transition: all 2s;
   transition: all 2s
+}
+.igra {
+  background: #505050;
+  width: 37.5rem;
+  height: 25rem
+}
+.igra__ball {
+  background-color: #00ffab;
+  width: 3.125rem;
+  height: 3.125rem;
+  border-radius: 50%
+}
+.igra__stars {
+  font-size: 2.125rem;
+  color: #fff;
+  font-weight: 700;
+  top: .313rem;
+  left: .625rem
+}
+.igra__lifes {
+  top: 1.25rem;
+  right: 1.25rem
+}
+.igra__lifes span {
+  width: .938rem;
+  height: .938rem;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  background-color: #a52174;
+  float: left
 }
