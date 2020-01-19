@@ -8,6 +8,15 @@ body {
 .mb_5 {
   margin-bottom: 3rem
 }
+.mt_5 {
+  margin-top: 3rem
+}
+.mt_4 {
+  margin-top: 1.5rem
+}
+.ml_5 {
+  margin-left: 3rem
+}
 .my_auto {
   margin: auto 0
 }
@@ -19,6 +28,9 @@ body {
 }
 .p_5 {
   padding: 3rem
+}
+.p_4 {
+  padding: 1.5rem
 }
 .w_100 {
   width: 100%
@@ -251,4 +263,20 @@ body {
   border: 3px solid #fff;
   background-color: #a52174;
   float: left
+}
+.count__minutes {
+  background-color: #00ffab;
+  color: #ff5600;
+  font-size: 2.125rem;
+  font-weight: 700
+}
+.count__seconds {
+  background-color: #00ffab;
+  color: #ff5600;
+  font-size: 2.125rem;
+  font-weight: 700
+}
+.count__span {
+  background-color: #fff;
+  padding: .5rem 1rem
 }
