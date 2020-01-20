@@ -243,7 +243,13 @@ body {
   background-color: #00ffab;
   width: 3.125rem;
   height: 3.125rem;
-  border-radius: 50%
+  border-radius: 50%;
+  -webkit-animation: ballColor 5s infinite linear;
+  animation: ballColor 5s infinite linear
+}
+.igra__ball_bounce_out {
+  -webkit-animation: ballOut .3s both;
+  animation: ballOut .3s both
 }
 .igra__stars {
   font-size: 2.125rem;
@@ -263,6 +269,42 @@ body {
   border: 3px solid #fff;
   background-color: #a52174;
   float: left
+}
+@-webkit-keyframes ballColor {
+  0% {
+    -webkit-filter: hue-rotate(0);
+    filter: hue-rotate(0)
+  }
+  100% {
+    -webkit-filter: hue-rotate(-360deg);
+    filter: hue-rotate(-360deg)
+  }
+}
+@keyframes ballColor {
+  0% {
+    -webkit-filter: hue-rotate(0);
+    filter: hue-rotate(0)
+  }
+  100% {
+    -webkit-filter: hue-rotate(-360deg);
+    filter: hue-rotate(-360deg)
+  }
+}
+@-webkit-keyframes ballOut {
+  from {
+    opacity: 1
+  }
+  to {
+    opacity: 0
+  }
+}
+@keyframes ballOut {
+  from {
+    opacity: 1
+  }
+  to {
+    opacity: 0
+  }
 }
 .count__minutes {
   background-color: #00ffab;

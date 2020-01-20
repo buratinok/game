@@ -136,7 +136,8 @@ var buttonClick = function buttonClick() {
       startBlock.style.display = 'none';
       startGame.style.display = '';
       start = true;
-    }
+    } //устанавливаем таймер
+
 
     function counTime() {
       var _coun = document.querySelector('#second');
@@ -147,11 +148,12 @@ var buttonClick = function buttonClick() {
         startGame.style.display = 'none';
         resetBlock.style.display = '';
       } else {
-        setTimeout(counTime, 1000);
+        setTimeout(counTime, 2000);
       }
-    }
+    } //запускаем таймер через 3с
 
-    setTimeout(counTime, 1000);
+
+    setTimeout(counTime, 2000);
   });
 };
 
@@ -168,6 +170,7 @@ var buttonClick = function buttonClick() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+// повтор игры
 var playAgain = function playAgain() {
   var playAgain = document.querySelectorAll('.play__again');
 
@@ -217,21 +220,42 @@ var playingField = function playingField() {
 
   igra.addEventListener('click', function (event) {
     /*получаем элементы*/
-    var _el = event.target; //мяч
+    var _el = event.target,
+        min = 15,
+        max = 85; //получение случайного числа
+
+    var _numX = Math.floor(Math.random() * (max - min + 1) + min);
+
+    var _numY = Math.floor(Math.random() * (max - min + 1) + min); //мяч
+
 
     if (_el === ball) {
-      stars.innerHTML = ++_count;
-      stars.style.color = '#fff';
-      _el.style.top = '30%';
-      _el.style.background = '#ff5600';
+      _el.classList.add('igra__ball_bounce_out');
+
+      setTimeout(function () {
+        _el.style.width = '';
+        _el.style.height = '';
+        _el.innerHTML = '';
+        _el.style.background = '#ff5600';
+        stars.style.color = '#fff';
+        stars.innerHTML = ++_count;
+        _el.style.top = _numY + '%';
+        _el.style.left = _numX + '%';
+
+        _el.classList.remove('igra__ball_bounce_out');
+      }, 500);
     } //счечик
 
 
     if (_el === stars && _el.innerHTML !== '0' && ball.style.top !== '') {
       _count = 0;
       _el.innerHTML = _count;
-      ball.style.top = '';
+      ball.style.top = '50%';
+      ball.style.left = '50%';
+      ball.style.width = '100px';
+      ball.style.height = '100px';
       ball.style.background = 'green';
+      ball.innerHTML = 'ball';
       _el.style.color = '#00ffab';
     }
   });
