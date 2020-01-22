@@ -139,7 +139,7 @@ var buttonClick = function buttonClick() {
     } //устанавливаем таймер
 
 
-    function counTime() {
+    var _timer = function counTime() {
       var _coun = document.querySelector('#second');
 
       _coun.innerHTML = '0' + --_coun.innerHTML;
@@ -147,13 +147,14 @@ var buttonClick = function buttonClick() {
       if (_coun.innerHTML == 0) {
         startGame.style.display = 'none';
         resetBlock.style.display = '';
+        clearTimeout(_timer);
       } else {
         setTimeout(counTime, 2000);
       }
-    } //запускаем таймер через 3с
+    }; //запускаем таймер через 3с
 
 
-    setTimeout(counTime, 2000);
+    setTimeout(_timer, 2000);
   });
 };
 
@@ -199,11 +200,6 @@ var playingField = function playingField() {
   //получаем мяч выставляем базовые значения
   var ball = document.querySelector('#ball');
   ball.style.background = 'green';
-  ball.style.width = '100px';
-  ball.style.height = '100px';
-  ball.innerHTML = 'ball';
-  ball.style.color = '#fff';
-  ball.style.fontSize = '26px';
   ball.style.display = 'flex';
   ball.style.alignItems = 'center';
   ball.style.justifyContent = 'center';
@@ -226,23 +222,26 @@ var playingField = function playingField() {
 
     var _numX = Math.floor(Math.random() * (max - min + 1) + min);
 
-    var _numY = Math.floor(Math.random() * (max - min + 1) + min); //мяч
+    var _numY = Math.floor(Math.random() * (max - min + 1) + min);
 
+    var minWidh = setInterval(function () {
+      //уменьшаем шарик перемещаем к 0px при щелчке
+      if (_el === ball && _el.style.width !== '0') {
+        _el.style.width = _el.clientWidth - 1 + "px";
+        _el.style.height = _el.clientHeight - 1 + "px";
+      }
+    }, 1); //мяч
 
     if (_el === ball) {
-      _el.classList.add('igra__ball_bounce_out');
-
       setTimeout(function () {
-        _el.style.width = '';
-        _el.style.height = '';
-        _el.innerHTML = '';
         _el.style.background = '#ff5600';
         stars.style.color = '#fff';
         stars.innerHTML = ++_count;
         _el.style.top = _numY + '%';
         _el.style.left = _numX + '%';
-
-        _el.classList.remove('igra__ball_bounce_out');
+        clearInterval(minWidh);
+        _el.style.width = '';
+        _el.style.height = '';
       }, 500);
     } //счечик
 
@@ -252,10 +251,7 @@ var playingField = function playingField() {
       _el.innerHTML = _count;
       ball.style.top = '50%';
       ball.style.left = '50%';
-      ball.style.width = '100px';
-      ball.style.height = '100px';
       ball.style.background = 'green';
-      ball.innerHTML = 'ball';
       _el.style.color = '#00ffab';
     }
   });
