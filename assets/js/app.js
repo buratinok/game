@@ -149,7 +149,7 @@ var buttonClick = function buttonClick() {
         resetBlock.style.display = '';
         clearTimeout(_timer);
       } else {
-        setTimeout(counTime, 2000);
+        setTimeout(counTime, 1000);
       }
     }; //запускаем таймер через 3с
 
