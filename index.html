@@ -35,16 +35,17 @@
             <!--countdown time-->
             <div id="count" class="d-flex count">
                 <div class="count__minutes p_4">
-                    <span class="count__span">00</span>
+                    <span id="minutes" class="count__span">00</span>
                 </div>
                 
                 <div class="count__seconds ml_5 p_4">
-                    <span id="second" class="count__span">08</span>
+                    <span id="seconds" class="count__span">08</span>
                 </div>
             </div>        <!--playing field-->
             <div id="igra" class="igra position_relative mt_4">
+                <div class="ball igra__ball position_absolute center"></div>
                 <div id="ball" class="igra__ball position_absolute center"></div>
-                <div id="stars" class="igra__stars position_absolute">0</div>
+                <div id="stars" class="igra__stars position_absolute" data-count="0"></div>
                 <div id="lifes" class="igra__lifes position_absolute"><span class="d-block"></span></div>
             </div>
         </div>

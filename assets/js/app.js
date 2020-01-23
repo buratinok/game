@@ -117,41 +117,52 @@ Object(_component_play_again__WEBPACK_IMPORTED_MODULE_2__["default"])();
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var buttonClick = function buttonClick() {
-  /*
-  * game
-  * */
+/* harmony import */ var _traffic_ball__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./traffic_ball */ "./src/assets/js/component/traffic_ball.js");
+/**
+ *  Функцыя button отвечает за начало игры
+ */
 
-  /*
-  * переменые
-   */
+
+var buttonClick = function buttonClick() {
+  // получаем обєкты на поле кешируем их
   var startBlock = document.querySelector('#startBlock');
   var startBtn = document.querySelector('#startBtn');
   var resetBlock = document.querySelector('#resetBlock');
   var playAgain = document.querySelector('.play__again');
-  var startGame = document.querySelector('#startGame');
-  var start = false;
+  var startGame = document.querySelector('#startGame'); //начальное состояние игры
+
+  var start = false; //устанавлеваем событие на кнопку start
+
   startBtn.addEventListener('click', function (event) {
+    //запускаем мячик по колу
+    Object(_traffic_ball__WEBPACK_IMPORTED_MODULE_0__["default"])(); //Проверяем начальное состояние если все в порядке переключаемся
+
     if (start == false) {
       startBlock.style.display = 'none';
       startGame.style.display = '';
       start = true;
-    } //устанавливаем таймер
+    } //устанавливаем таймер отсчета времени минуты и секкунды
 
 
     var _timer = function counTime() {
-      var _coun = document.querySelector('#second');
+      //получаем и устанавливаем минуты
+      var _minutes = document.querySelector('#minutes');
 
-      _coun.innerHTML = '0' + --_coun.innerHTML;
+      _minutes.innerHTML = _minutes.innerHTML; //получаем и устанавливаем секунды
 
-      if (_coun.innerHTML == 0) {
+      var _seconds = document.querySelector('#seconds');
+
+      _seconds.innerHTML = '0' + --_seconds.innerHTML; //проверяем окончание времени
+
+      if (_minutes.innerHTML == 0 && _seconds.innerHTML == 0) {
         startGame.style.display = 'none';
         resetBlock.style.display = '';
         clearTimeout(_timer);
       } else {
+        //обнуляем таймер
         setTimeout(counTime, 1000);
       }
-    }; //запускаем таймер через 3с
+    }; //запускаем таймер через 2с после загрузки игры
 
 
     setTimeout(_timer, 2000);
@@ -171,9 +182,14 @@ var buttonClick = function buttonClick() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-// повтор игры
+/**
+ *  Функцыя play_again
+ *  отвечает за перезапучск окна игры в мяч
+ *
+ */
 var playAgain = function playAgain() {
-  var playAgain = document.querySelectorAll('.play__again');
+  //получаем все кнопки
+  var playAgain = document.querySelectorAll('.play__again'); //перебираем все кнопки play__again и устанавливаем событие при котором перезагружается игра
 
   for (var i = 0; i < playAgain.length; i++) {
     playAgain[i].onclick = function () {
@@ -195,44 +211,63 @@ var playAgain = function playAgain() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//module playing field
+/*
+*  module playing field
+*
+*  Отвечает за базовые значения счечика, мяча, жизни
+*  Следит за событиями на поле игры
+*
+*/
 var playingField = function playingField() {
-  //получаем мяч выставляем базовые значения
+  //получаем и проверяем наличие мяч на поле выставляем базовые значения
+  var ourBall = false;
   var ball = document.querySelector('#ball');
-  ball.style.background = 'green';
-  ball.style.display = 'flex';
-  ball.style.alignItems = 'center';
-  ball.style.justifyContent = 'center';
-  ball.style.cursor = 'pointer'; //получаем счечик выставляем базовые значения
+
+  if (ball) {
+    ball.style.background = 'green';
+    ball.style.display = 'flex';
+    ball.style.alignItems = 'center';
+    ball.style.justifyContent = 'center';
+    ball.style.cursor = 'pointer';
+    var ourBall = true;
+  }
+
+  console.log("\u043C\u044F\u0447 \u0432 \u0446\u0435\u043D\u0442\u0440\u0435 ".concat(ourBall)); //выставляем базовые значения stars
 
   var stars = document.querySelector('#stars');
-  var _count = 0;
   stars.style.color = '#00FFAB';
-  stars.innerHTML = '0';
-  stars.style.cursor = 'pointer'; //получаем жизни выставляем базовые значения
+  stars.innerHTML = stars.dataset.count;
+  stars.style.cursor = 'pointer'; //устанавливаем счечик в 0
+
+  var _count = stars.dataset.count;
+  console.log("\u0441\u0447\u0435\u0442 \u0438\u0433\u0440\u044B \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D ".concat(_count)); //получаем жизни выставляем базовые значения
 
   var lifes = document.querySelector('#lifes');
-  lifes.innerHTML = '<span></span><span></span><span></span><span></span><span></span>'; //прослушиваем событие click на поле и изменяем соответственно условий
+  lifes.innerHTML = '<span></span><span></span><span></span><span></span><span></span>'; //прослушиваем событие click на поле и изменяем соответственно условий обєкты на поле и их значения
 
   igra.addEventListener('click', function (event) {
-    /*получаем элементы*/
+    //получаем элементы
     var _el = event.target,
         min = 15,
-        max = 85; //получение случайного числа
+        max = 85; //получение случайного числа ₴₴₴пересмотрель ф-к случайное число
 
     var _numX = Math.floor(Math.random() * (max - min + 1) + min);
 
     var _numY = Math.floor(Math.random() * (max - min + 1) + min);
 
+    console.log("\u0441\u043B\u0443\u0447\u0430\u0439\u043D\u044B\u0435 \u043A\u043E\u043E\u0440\u0434\u0438\u043D\u0430\u0442\u044B \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u044B\u0435 X = ".concat(_numX, " Y = ").concat(_numY)); //уменьшаем мяч
+
     var minWidh = setInterval(function () {
-      //уменьшаем шарик перемещаем к 0px при щелчке
+      //уменьшаем мяч, перемещаем при щелчке
       if (_el === ball && _el.style.width !== '0') {
         _el.style.width = _el.clientWidth - 1 + "px";
         _el.style.height = _el.clientHeight - 1 + "px";
+        console.log("\u043C\u044F\u0447 \u0443\u043C\u0435\u043D\u044C\u0448\u0435\u043D");
       }
-    }, 1); //мяч
+    }, 1); //получаем мяч
 
-    if (_el === ball) {
+    if (_el === ball && ourBall != false) {
+      //устанавливаем условия при щелчке на мячик
       setTimeout(function () {
         _el.style.background = '#ff5600';
         stars.style.color = '#fff';
@@ -242,22 +277,76 @@ var playingField = function playingField() {
         clearInterval(minWidh);
         _el.style.width = '';
         _el.style.height = '';
+        console.log("\u0441\u0447\u0435\u0442 \u0443\u0436\u0435 ".concat(_count));
       }, 500);
-    } //счечик
+    } //обнуление счечика выставление базовых значений
 
 
     if (_el === stars && _el.innerHTML !== '0' && ball.style.top !== '') {
-      _count = 0;
+      _count = '0';
       _el.innerHTML = _count;
       ball.style.top = '50%';
       ball.style.left = '50%';
       ball.style.background = 'green';
       _el.style.color = '#00ffab';
+      console.log("\u0441\u0447\u0435\u0447\u0438\u043A \u0441\u0442\u043E\u0438\u0442 \u0432 ".concat(_el.innerHTML, " \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u043C\u044F\u0447\u0430 \u0432 \u043D\u0430\u0447\u0430\u043B\u044C\u043D\u043E\u043C \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0438"));
     }
   });
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (playingField);
+
+/***/ }),
+
+/***/ "./src/assets/js/component/traffic_ball.js":
+/*!*************************************************!*\
+  !*** ./src/assets/js/component/traffic_ball.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Функцыя traffic ball отвечает за движение мячика
+ * */
+var trafficBall = function trafficBall() {
+  var ballXY = document.querySelector('.ball');
+  console.log("\u0437\u0430\u043F\u0443\u0441\u043A \u043C\u044F\u0447 \u043A\u043E\u0442\u043E\u0440\u044B\u0439 \u0434\u0432\u0438\u0436\u0435\u0442\u0441\u044F \u043F\u043E \u043F\u0435\u0440\u0438\u043C\u0435\u0442\u0440\u0443");
+  var keyfBall = [{
+    top: '0',
+    left: '0',
+    marginTop: '4.1%',
+    marginLeft: '4.1%'
+  }, {
+    top: 0,
+    left: '100%',
+    marginTop: '4.1%',
+    marginLeft: '-4.1%'
+  }, {
+    top: '100%',
+    left: '100%',
+    marginTop: '-4.1%',
+    marginLeft: '-4.1%'
+  }, {
+    top: '100%',
+    left: '0',
+    marginTop: '-4.1%',
+    marginLeft: '4.1%'
+  }, {
+    top: '0',
+    left: '0',
+    marginTop: '4.1%',
+    marginLeft: '4.1%'
+  }];
+  var keyfTiming = {
+    duration: 5000,
+    iterations: Infinity
+  };
+  ballXY.animate(keyfBall, keyfTiming);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (trafficBall);
 
 /***/ }),
 
