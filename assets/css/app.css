@@ -11,6 +11,9 @@ body {
 .mt_5 {
   margin-top: 3rem
 }
+.mt_1 {
+  margin-top: .5rem
+}
 .mt_4 {
   margin-top: 1.5rem
 }
@@ -19,6 +22,9 @@ body {
 }
 .my_auto {
   margin: auto 0
+}
+.mx_1 {
+  margin: 0 .5rem
 }
 .m_5 {
   margin: 3rem
@@ -31,6 +37,9 @@ body {
 }
 .p_4 {
   padding: 1.5rem
+}
+.px_2 {
+  padding: 0 .5rem
 }
 .w_100 {
   width: 100%
@@ -135,6 +144,12 @@ body {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center
+}
+.d-flex_al-it_end {
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+  -ms-flex-align: end;
+  align-items: flex-end
 }
 .d-flex_js-cn_center {
   -webkit-box-pack: center;
@@ -330,4 +345,51 @@ body {
 .count__span {
   background-color: #fff;
   padding: .5rem 1rem
+}
+.timer__hr {
+  font-size: 9.375rem;
+  font-weight: 700
+}
+.timer__mls {
+  width: 50px;
+  text-align: center;
+  font-size: 3rem;
+  position: absolute;
+  right: 23%;
+  top: 25%
+}
+.timer__button {
+  width: 6.25rem;
+  height: 6.25rem;
+  border-radius: 50%;
+  margin-left: .5rem;
+  cursor: pointer
+}
+.timer__button.start {
+  background-color: #a90000;
+  font-weight: 700;
+  color: #fff;
+  font-size: 20px
+}
+.timer__button.start:hover {
+  background-color: #000
+}
+.timer__button.split {
+  background-color: #a52174;
+  font-weight: 700;
+  color: #fff;
+  font-size: 20px
+}
+.timer__button.split:hover {
+  background-color: #000;
+  color: #fff
+}
+.timer__button.reset {
+  background-color: rgba(42,16,255,.72157);
+  font-weight: 700;
+  color: #fff;
+  font-size: 20px
+}
+.timer__button.reset:hover {
+  background-color: #000
 }

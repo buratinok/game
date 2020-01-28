@@ -311,8 +311,10 @@ __webpack_require__.r(__webpack_exports__);
  * Функцыя traffic ball отвечает за движение мячика
  * */
 var trafficBall = function trafficBall() {
+  //кешируем мячик
   var ballXY = document.querySelector('.ball');
-  console.log("\u0437\u0430\u043F\u0443\u0441\u043A \u043C\u044F\u0447 \u043A\u043E\u0442\u043E\u0440\u044B\u0439 \u0434\u0432\u0438\u0436\u0435\u0442\u0441\u044F \u043F\u043E \u043F\u0435\u0440\u0438\u043C\u0435\u0442\u0440\u0443");
+  console.log("\u0437\u0430\u043F\u0443\u0441\u043A \u043C\u044F\u0447 \u043A\u043E\u0442\u043E\u0440\u044B\u0439 \u0434\u0432\u0438\u0436\u0435\u0442\u0441\u044F \u043F\u043E \u043F\u0435\u0440\u0438\u043C\u0435\u0442\u0440\u0443"); //задаем параматров для анимацыи
+
   var keyfBall = [{
     top: '0',
     left: '0',
@@ -338,11 +340,13 @@ var trafficBall = function trafficBall() {
     left: '0',
     marginTop: '4.1%',
     marginLeft: '4.1%'
-  }];
+  }]; //задаем время анимацыи и вид
+
   var keyfTiming = {
     duration: 5000,
     iterations: Infinity
-  };
+  }; //запуск анимацыи
+
   ballXY.animate(keyfBall, keyfTiming);
 };
 
