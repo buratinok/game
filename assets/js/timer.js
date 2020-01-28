@@ -161,18 +161,18 @@ function $startPause() {
 
 
 function $startsTimer() {
-  $in = setInterval(function () {
-    if (isPause == true) {
+  if (isPause == false) {
+    $in = setInterval(function () {
       $hours = plusNull(Math.floor(++$count / (1000 * 60 * 60) % 24));
       $minutes = plusNull(Math.floor(++$count / 1000 / 60 % 60));
       $seconds = plusNull(Math.floor(++$count / 1000 % 60));
       $mlseconds = plusNull(Math.floor(++$count % 1000));
-      $time.innerHTML = "".concat($hours, ":").concat($minutes, ":").concat($seconds, ".").concat(('' + $mlseconds * 100).slice(0, 1));
+      $time.innerHTML = "".concat($hours, ":").concat($minutes, ":").concat($seconds, ".").concat(('' + $mlseconds * 100).substr(0, 1));
       $timeMs.innerHTML = "".concat(('' + $mlseconds).slice(-2));
-    } else if (isPause == false) {
-      clearInterval($in);
-    }
-  }, 1);
+    }, 1);
+  } else if (isPause == true) {
+    clearInterval($in);
+  }
 } //функцыя создание контрольной точки
 
 
